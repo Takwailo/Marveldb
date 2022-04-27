@@ -1,4 +1,6 @@
 from django.db import models
+from django.urls import reverse
+
 
 # Create your models here.
 class Heros(models.Model):
@@ -8,3 +10,6 @@ class Heros(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('hero_detail', kwargs={'hero_id': self.id})

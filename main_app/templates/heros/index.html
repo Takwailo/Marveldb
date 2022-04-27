@@ -2,10 +2,10 @@
 {% block content %}
 
 <h1>Heros List</h1>
-
+<a href="{% url 'hero_create' %}" class="btn-floating btn-medium waves-effect waves-light black"><i class="material-icons">add</i></a>
 {% for hero in heros %}
   <div class="card">
-    <a href="{% url 'herodetail' hero.id %}">
+    <a href="{% url 'hero_detail' hero.id %}">
     <div class="card-content">
       <span class="card-title">{{ hero.name }}</span>
     </div>
