@@ -28,8 +28,9 @@ def heros_index(request):
 
 def heros_detail(request, hero_id):
     hero = Heros.objects.get(id=hero_id)
+    villians = Villian.objects.exclude(id__in = hero.villians.all().values_list('id'))
     movie_form = MovieForm()
-    return render(request, 'heros/detail.html', {'hero':hero, 'movie_form':movie_form})
+    return render(request, 'heros/detail.html', {'hero':hero, 'movie_form':movie_form, 'villians': villians})
 
 def add_movie(request, hero_id):
   form = MovieForm(request.POST)
@@ -59,3 +60,7 @@ def villian_detail(request, villian_id):
     villian = Villian.objects.get(id=villian_id)
     movie_form = MovieForm()
     return render(request, 'villians/detail.html', {'villian':villian, 'movie_form':movie_form})
+
+def assoc_villian(request, hero_id, villian_id):
+  Heros.objects.get(id=hero_id).villians.add(villian_id)
+  return redirect('hero_detail', hero_id=hero_id)
