@@ -13,4 +13,6 @@ urlpatterns = [
       path('villians/', views.villians_index, name='villians_index'),
       path('villians/<int:villian_id>/', views.villian_detail, name='villian_detail'),
       path('villians/create/', views.VillianCreate.as_view(), name='villian_create'),
+      path('villians/<int:pk>/update/', views.VillianUpdate.as_view(), name='villian_update'),
+      path('villians/<int:pk>/delete/', views.VillianDelete.as_view(), name='villian_delete'),
 ]
