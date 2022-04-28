@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h1>Villians List</h1>
+<a href="{% url 'villian_create' %}" class="btn-floating btn-medium waves-effect waves-light black"><i class="material-icons">add</i></a>
+{% for villian in villians_create %}
+  <div class="card">
+    <a href="{% url 'villian_detail' villian.id %}">
+    <div class="card-content">
+      <span class="card-title">{{ hero.name }}</span>
+    </div>
+  </a>
+  </div>
+{% endfor %}
+
+{% endblock %}
